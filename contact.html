@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact QuickTools Hub with questions, suggestions, or feedback.">
+  <title>Contact Us | QuickTools Hub</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #20283b;
+      line-height: 1.7;
+    }
+    header {
+      background: #263aee;
+      color: white;
+      text-align: center;
+      padding: 28px 16px;
+    }
+    nav {
+      background: white;
+      text-align: center;
+      padding: 16px;
+    }
+    nav a {
+      color: #263aee;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 10px;
+    }
+    main {
+      max-width: 800px;
+      margin: 32px auto;
+      padding: 28px;
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 4px 18px rgba(20, 35, 70, .07);
+    }
+    h2 { color: #263aee; }
+    .contact-box {
+      background: #eef1ff;
+      border-radius: 10px;
+      padding: 18px;
+      margin: 20px 0;
+    }
+    .contact-link {
+      display: inline-block;
+      background: #263aee;
+      color: white;
+      text-decoration: none;
+      padding: 11px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #657087;
+    }
+    @media (max-width: 600px) {
+      main { margin: 18px; padding: 20px; }
+      nav a { display: inline-block; margin: 6px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Contact Us</h1>
+    <p>We welcome your questions and feedback.</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <h2>Get in Touch</h2>
+    <p>Have a question about one of our calculators, found an issue, or have an idea for a new tool? We'd be happy to hear your feedback.</p>
+
+    <div class="contact-box">
+      <h2>Email Us</h2>
+      <p>Send your questions and suggestions by email.</p>
+      <p><strong>Important:</strong> Replace the example email address below with an email address you control before publishing this page.</p>
+      <a class="contact-link" href="mailto:YOUR-EMAIL@example.com?subject=QuickTools%20Hub%20Feedback">Send an Email</a>
+    </div>
+
+    <h2>What Can You Contact Us About?</h2>
+    <ul>
+      <li>Reporting calculation errors or technical issues</li>
+      <li>Suggesting new calculators and converters</li>
+      <li>Sharing feedback about the website</li>
+      <li>Asking questions about our privacy policy</li>
+    </ul>
+
+    <p>We appreciate your patience. Response times may vary.</p>
+    <p><a href="index.html">Return to QuickTools Hub</a></p>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> QuickTools Hub.</p>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
