@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="QuickTools Hub offers free online calculators and converters to make everyday calculations easy.">
+  <title>QuickTools Hub — Free Online Tools</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #20283b;
+    }
+    header {
+      background: #263aee;
+      color: white;
+      padding: 28px 18px;
+      text-align: center;
+    }
+    header h1 { margin: 0 0 10px; font-size: 32px; }
+    header p { margin: 0; color: #e3e7ff; }
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 16px;
+      background: white;
+    }
+    nav a {
+      color: #263aee;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px;
+    }
+    main { max-width: 1050px; margin: 28px auto; padding: 0 16px; }
+    .intro { text-align: center; margin-bottom: 28px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    .tool {
+      background: white;
+      border-radius: 14px;
+      padding: 22px;
+      box-shadow: 0 4px 18px rgba(20, 35, 70, .07);
+    }
+    .tool h2 { margin-top: 0; font-size: 20px; }
+    label { display: block; margin: 12px 0 6px; font-size: 14px; }
+    input, select {
+      width: 100%;
+      padding: 11px;
+      border: 1px solid #ccd2df;
+      border-radius: 8px;
+      background: white;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 14px;
+      background: #263aee;
+      color: white;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    button:hover { background: #1728c8; }
+    .result {
+      background: #eef1ff;
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 14px;
+      min-height: 42px;
+      overflow-wrap: anywhere;
+    }
+    footer {
+      text-align: center;
+      padding: 25px 16px;
+      color: #657087;
+      font-size: 14px;
+    }
+    footer a { color: #263aee; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>QuickTools Hub</h1>
+    <p>Simple, free tools for everyday life.</p>
+  </header>
+
+  <nav>
+    <a href="#currency">Currency</a>
+    <a href="#age">Age</a>
+    <a href="#percentage">Percentage</a>
+    <a href="#date">Date</a>
+    <a href="#units">Unit Converter</a>
+  </nav>
+
+  <main>
+    <section class="intro">
+      <h2>What do you need to calculate?</h2>
+      <p>Choose a tool below. No account required.</p>
+    </section>
+
+    <div class="grid">
+      <section class="tool" id="currency">
+        <h2>💱 Currency Converter</h2>
+        <label for="money">Amount</label>
+        <input id="money" type="number" min="0" step="any" value="1">
+        <label for="fromCurrency">From</label>
+        <select id="fromCurrency">
+          <option>USD</option><option>EUR</option><option>GBP</option>
+          <option>RWF</option><option>NGN</option><option>CAD</option>
+          <option>AUD</option><option>JPY</option><option>INR</option>
+        </select>
+        <label for="toCurrency">To</label>
+        <select id="toCurrency">
+          <option>RWF</option><option>USD</option><option>EUR</option>
+          <option>GBP</option><option>NGN</option><option>CAD</option>
+          <option>AUD</option><option>JPY</option><option>INR</option>
+        </select>
+        <button onclick="convertCurrency()">Convert Currency</button>
+        <div class="result" id="currencyResult" aria-live="polite">Exchange rates load when you convert.</div>
+      </section>
+
+      <section class="tool" id="age">
+        <h2>🎂 Age Calculator</h2>
+        <label for="birthDate">Your date of birth</label>
+        <input id="birthDate" type="date">
+        <button onclick="calculateAge()">Calculate Age</button>
+        <div class="result" id="ageResult" aria-live="polite">Your age will appear here.</div>
+      </section>
+
+      <section class="tool" id="percentage">
+        <h2>📊 Percentage Calculator</h2>
+        <label for="percent">Percentage (%)</label>
+        <input id="percent" type="number" step="any" placeholder="e.g. 20">
+        <label for="baseNumber">Number</label>
+        <input id="baseNumber" type="number" step="any" placeholder="e.g. 150">
+        <button onclick="calculatePercentage()">Calculate Percentage</button>
+        <div class="result" id="percentageResult" aria-live="polite">Your answer will appear here.</div>
+      </section>
+
+      <section class="tool" id="date">
+        <h2>📅 Date Calculator</h2>
+        <label for="startDate">Start date</label>
+        <input id="startDate" type="date">
+        <label for="endDate">End date</label>
+        <input id="endDate" type="date">
+        <button onclick="calculateDays()">Calculate Days Between</button>
+        <div class="result" id="dateResult" aria-live="polite">The number of days will appear here.</div>
+      </section>
+
+      <section class="tool" id="units">
+        <h2>📏 Unit Converter</h2>
+        <label for="unitValue">Value</label>
+        <input id="unitValue" type="number" step="any" value="1">
+        <label for="unitType">Convert</label>
+        <select id="unitType">
+          <option value="km-mi">Kilometers to Miles</option>
+          <option value="mi-km">Miles to Kilometers</option>
+          <option value="kg-lb">Kilograms to Pounds</option>
+          <option value="lb-kg">Pounds to Kilograms</option>
+          <option value="cm-in">Centimeters to Inches</option>
+          <option value="in-cm">Inches to Centimeters</option>
+          <option value="c-f">Celsius to Fahrenheit</option>
+          <option value="f-c">Fahrenheit to Celsius</option>
+        </select>
+        <button onclick="convertUnits()">Convert Units</button>
+        <div class="result" id="unitResult" aria-live="polite">Your converted value will appear here.</div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> QuickTools Hub. Free tools for everyone.</p>
+    <p>Results are provided for general informational use.</p>
+    <p><a href="mailto:hello@example.com">Contact us</a></p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function show(id, message) {
+      document.getElementById(id).textContent = message;
+    }
+
+    function calculateAge() {
+      const value = document.getElementById("birthDate").value;
+      if (!value) return show("ageResult", "Please select your birth date.");
+      const birth = new Date(value + "T00:00:00");
+      const today = new Date();
+      if (birth > today) return show("ageResult", "Birth date cannot be in the future.");
+      let years = today.getFullYear() - birth.getFullYear();
+      let months = today.getMonth() - birth.getMonth();
+      let days = today.getDate() - birth.getDate();
+      if (days < 0) {
+        months--;
+        days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+      }
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+      show("ageResult", `You are ${years} years, ${months} months, and ${days} days old.`);
+    }
+
+    function calculatePercentage() {
+      const p = Number(document.getElementById("percent").value);
+      const n = Number(document.getElementById("baseNumber").value);
+      if (document.getElementById("percent").value === "" ||
+          document.getElementById("baseNumber").value === "") {
+        return show("percentageResult", "Enter both the percentage and the number.");
+      }
+      show("percentageResult", `${p}% of ${n} = ${(p * n / 100).toLocaleString(undefined, {maximumFractionDigits: 6})}`);
+    }
+
+    function calculateDays() {
+      const a = document.getElementById("startDate").value;
+      const b = document.getElementById("endDate").value;
+      if (!a || !b) return show("dateResult", "Please select both dates.");
+      const days = Math.round((Date.parse(b + "T00:00:00Z") - Date.parse(a + "T00:00:00Z")) / 86400000);
+      show("dateResult", `${Math.abs(days).toLocaleString()} days between the dates${days < 0 ? " (end date is earlier than start date)" : ""}.`);
+    }
+
+    function convertUnits() {
+      const raw = document.getElementById("unitValue").value;
+      if (raw === "") return show("unitResult", "Please enter a value.");
+      const v = Number(raw);
+      const type = document.getElementById("unitType").value;
+      const conversions = {
+        "km-mi": [v * 0.621371, "miles"],
+        "mi-km": [v / 0.621371, "kilometers"],
+        "kg-lb": [v * 2.20462262, "pounds"],
+        "lb-kg": [v / 2.20462262, "kilograms"],
+        "cm-in": [v / 2.54, "inches"],
+        "in-cm": [v * 2.54, "centimeters"],
+        "c-f": [(v * 9 / 5) + 32, "°F"],
+        "f-c": [(v - 32) * 5 / 9, "°C"]
+      };
+      const [result, unit] = conversions[type];
+      show("unitResult", `${result.toLocaleString(undefined, {maximumFractionDigits: 6})} ${unit}`);
+    }
+
+    async function convertCurrency() {
+      const raw = document.getElementById("money").value;
+      const from = document.getElementById("fromCurrency").value;
+      const to = document.getElementById("toCurrency").value;
+      if (raw === "" || !Number.isFinite(Number(raw)) || Number(raw) < 0) {
+        return show("currencyResult", "Enter a valid non-negative amount.");
+      }
+      if (from === to) return show("currencyResult", `${Number(raw).toLocaleString()} ${to}`);
+      show("currencyResult", "Fetching the latest available exchange rate...");
+      try {
+        const response = await fetch(`https://open.er-api.com/v6/latest/${encodeURIComponent(from)}`);
+        if (!response.ok) throw new Error("Network error");
+        const data = await response.json();
+        if (data.result !== "success" || !data.rates || !data.rates[to]) {
+          throw new Error("Rate unavailable");
+        }
+        const result = Number(raw) * data.rates[to];
+        show("currencyResult", `${Number(raw).toLocaleString()} ${from} ≈ ${result.toLocaleString(undefined, {maximumFractionDigits: 4})} ${to}. Rates may change and may not match your bank's fees.`);
+      } catch {
+        show("currencyResult", "We couldn't load exchange rates. Please check your internet connection and try again.");
+      }
+    }
+  </script>
+</body>
+</html>
